@@ -15,22 +15,23 @@ function checkwin(){
   document.getElementById('3').innerText==='X' ){
     winner.value='X'
     document.getElementById('winner').style.display="block";
-    reset();
+   
   }
   
 }
 function reset(){
-  const blocks=document.querySelectorAll("div.block")
-  for(let i=0;i<NodeList.length;i++){
-    NodeList[i].innerText=''
-    console.log(blocks)
+  
+  for(let i=1; i<=9;i++){
+    document.getElementById(i).innerText=''
   }
- 
+   document.getElementById('winner').style.display="none";
+   
+  
 }
 </script>
 
 <template>
-  <div class="  flex justify-center items-center flex-col  w-screen h-[450px]">
+  <div class="  flex justify-center items-center flex-col  w-screen h-[450px] relative">
     <p class="text-3xl m-4">Game Board</p>
     <h2 class="text-2xl m-4 font-bold text-red-950">Current Player "{{ currentPlayer }}"</h2>
     <div class="flex">
@@ -48,7 +49,7 @@ function reset(){
     <div class="block hover:bg-lime-600" id="8" @click="Playnext('8')"></div>
     <div class="block hover:bg-lime-600" id="9" @click="Playnext('9')"></div>
     </div>
-    <p class="absolute top-[70%] text-2xl font-bold hidden" id="winner">Winner is {{ winner }}</p>
-
+    <p class="absolute top-[35%] text-3xl text-green-800 font-bold hidden bg-yellow-600 px-4 py-20 w-52 h-52 text-center" id="winner"  >Winner is {{ winner }}</p>
+    <button class="bg-red-600 w-32 h-10 rounded-md text-white my-3 py-2" @click="reset">Reset</button>
   </div>
 </template>
